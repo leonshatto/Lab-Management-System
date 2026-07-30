@@ -1,19 +1,7 @@
 # Lab-Management-System
 Lab Management System is a full-stack web application built with to centralize laboratory inventory management. It features role-based access control, Excel import using SheetJS, warranty and issue tracking, equipment transfers, and report generation, reducing manual effort and improving inventory management efficiency.
-# Lab Management System
+<h3>Login Page</h3>
+<img src="screenshots/Login Page.png" width="800">
 
-## Login Page
-
-![Login Page](screenshots/Login Page.png)
-
-## Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-## Inventory Management
-
-![Inventory](screenshots/inventory.png)
-
-## Equipment Transfer
-
-![Transfer](screenshots/transfer.png)
+<h3>Dashboard</h3>
+<img src="screenshots/dashboard.png" width="800">
