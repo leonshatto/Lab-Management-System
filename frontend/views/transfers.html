@@ -1,0 +1,25 @@
+<h1>Transfer Requests</h1>
+<div class="card" id="trans-form">
+    <h4>1. Select Source Lab</h4>
+    <select id="t-src" onchange="loadSourceItems()"><option value="">Select Source Lab...</option></select>
+    
+    <h4>2. Select Items to Transfer</h4>
+    <div class="transfer-list-box" id="transfer-items-container">
+        <p style="color:#888;">Select a source lab first to see items.</p>
+    </div>
+    <label><input type="checkbox" onchange="toggleSelectAll(this)"> <b>Select All Equipment</b></label>
+    
+    <h4 style="margin-top:20px;">3. Select Destination Lab</h4>
+    <select id="t-dest"><option value="">Select Destination Lab...</option></select>
+    
+    <br><br>
+    <button class="btn" onclick="reqTransfer()">Request Transfer</button>
+</div>
+
+<h3>Transfer History</h3>
+<table class="table">
+    <thead>
+        <tr><th>From</th><th>To</th><th>Items Qty</th><th>Status</th><th>Action</th></tr>
+    </thead>
+    <tbody id="trans-list"></tbody>
+</table>

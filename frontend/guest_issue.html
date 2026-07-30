@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Report Lab Issue - CEC</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f7f6; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 400px; text-align: center; }
+        .login-card select, .login-card input, .login-card textarea { width: 100%; margin-bottom: 15px; box-sizing: border-box; }
+        .back-link { display: block; margin-top: 15px; font-size: 14px; text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <img src="images/cec_logo.jpeg" alt="CEC Logo" style="width: 80px; margin-bottom: 15px;">
+        <h2 style="margin-bottom: 20px;">Report Lab Issue</h2>
+        
+        <input id="g-name" placeholder="Your Name (e.g., John - S8 CS)">
+        
+        <select id="g-lab" onchange="loadEquip()"><option value="">Select Lab...</option></select>
+        <select id="g-equip"><option value="">Select Equipment...</option></select>
+        
+        <textarea id="g-desc" rows="3" placeholder="Describe the problem (e.g., Monitor not turning on)" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit;"></textarea>
+        
+        <button class="btn" style="width: 100%; background: #dc3545;" onclick="submitIssue()">Submit Report</button>
+        
+        <a href="index.html" class="back-link">← Back to Login</a>
+    </div>
+
+    <script>
+        const API = 'http://localhost:5000/api/public'; // Uses the new secure public routes
+
+        // Load labs immediately when the page opens
+        window.onload = async () => {
+            const res = await fetch(`${API}/labs`);
+            const labs = await res.json();
+            document.getElementById('g-lab').innerHTML = '<option value="">Select Lab...</option>' + 
+                labs.map(l => `<option value="${l.id}">${l.lab_name}</option>`).join('');
+        };
+
+        // Load equipment when a specific lab is selected
+        async function loadEquip() {
+            const labId = document.getElementById('g-lab').value;
+            const equipSelect = document.getElementById('g-equip');
+            if (!labId) { equipSelect.innerHTML = '<option value="">Select Equipment...</option>'; return; }
+            
+            const res = await fetch(`${API}/equipments?lab_id=${labId}`);
+            const items = await res.json();
+            equipSelect.innerHTML = '<option value="">Select Equipment...</option>' + 
+                items.map(i => `<option value="${i.id}">${i.item_name} (SN: ${i.serial_no})</option>`).join('');
+        }
+
+        // Submit the issue to the database
+        async function submitIssue() {
+            const reporter_name = document.getElementById('g-name').value;
+            const lab_id = document.getElementById('g-lab').value;
+            const equipment_id = document.getElementById('g-equip').value;
+            const description = document.getElementById('g-desc').value;
+
+            if(!reporter_name || !lab_id || !equipment_id || !description) return alert("Please fill all fields!");
+
+            const res = await fetch(`${API}/issues`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ reporter_name, lab_id, equipment_id, description })
+            });
+
+            if(res.ok) {
+                alert("Issue reported successfully! The lab staff will look into it.");
+                window.location.href = 'index.html'; // Send them back to the login page
+            } else {
+                alert("Error reporting issue.");
+            }
+        }
+    </script>
+</body>
+</html>

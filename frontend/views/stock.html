@@ -1,0 +1,39 @@
+<style>
+    /* CSS that activates ONLY when you press Print */
+    @media print {
+        body * { visibility: hidden; } 
+        
+        .print-active, .print-active * { visibility: visible; }
+        
+        /* FIX: Lock width and prevent padding from pushing the table off the page */
+        .print-active { 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            width: 100% !important; 
+            max-width: 100%;
+            margin: 0; 
+            padding: 0 !important; /* Removes the card padding during print */
+            box-sizing: border-box;
+        }
+        
+        /* FIX: Remove shadow and rounding for a clean paper print */
+        .print-active.card {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+
+        .no-print { display: none !important; }
+        
+        table { border-collapse: collapse !important; width: 100% !important; }
+        th, td { border: 1px solid black !important; color: black !important; padding: 10px !important; }
+    }
+</style>
+
+<div class="no-print" style="margin-bottom: 20px;">
+    <h2>Lab-Wise Stock Inventory</h2>
+    <p style="color: gray;">Aggregated count of all equipment by type. Click "Print" below any lab to generate its official document.</p>
+</div>
+
+<div id="stock-list-container">
+    </div>

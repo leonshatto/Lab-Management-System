@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"><title>LMS Login</title></head>
+<body>
+    <div class="login-wrap">
+        <div class="card" style="width: 300px;">
+            <img src="images/cec_logo.jpeg" alt="CEC Logo" class="app-logo">
+<h3 class="logo-text">Lab Management</h3>
+            <form id="loginForm">
+                <input type="text" id="user" placeholder="Username" required>
+                <input type="password" id="pass" placeholder="Password" required>
+                <button class="btn" style="width:100%">Login</button>
+            </form>
+            <br>
+            <a href="guest_issue.html" style="display:block; text-align:center;">Report Issue (Guest)</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('http://localhost:5000/api/auth/login', {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({username:document.getElementById('user').value, password:document.getElementById('pass').value})
+            });
+            if(res.ok) {
+                const data = await res.json();
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('role', data.role);
+                window.location.href = 'dashboard.html';
+            } else alert('Invalid Login');
+        };
+    </script>
+</body>
+</html>

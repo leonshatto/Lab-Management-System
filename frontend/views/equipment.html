@@ -1,0 +1,35 @@
+<h1>Equipment Details</h1>
+
+<h3 style="color: #d9534f; margin-top: 20px;">Expired, To-Replace & Broken Devices</h3>
+<table class="table" style="border: 2px solid #d9534f;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Serial</th>
+            <th>Specs</th>
+            <th>Lab</th>
+            <th>Age</th>
+            <th>Status</th>
+            <th>Supplier</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="expired-list"></tbody>
+</table>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; margin-bottom: 15px;">
+    <h3 style="margin: 0;">All Equipment (Grouped by Lab)</h3>
+    
+    <div>
+        <label style="font-weight: 500; margin-right: 8px; color: #555;">Sort by Price:</label>
+        <select id="sort-price" onchange="loadEquipView()" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; outline: none; cursor: pointer;">
+            <option value="none">Default Order</option>
+            <option value="asc">Low to High (Ascending)</option>
+            <option value="desc">High to Low (Descending)</option>
+        </select>
+    </div>
+</div>
+
+<div id="grouped-equip-list"></div>

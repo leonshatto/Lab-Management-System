@@ -1,0 +1,17 @@
+<h1>Dashboard Overview</h1>
+<div class="stats">
+    <div class="stat-box"><h3>Labs</h3><span id="s-labs">0</span></div>
+    <div class="stat-box"><h3>Equipment</h3><span id="s-equip">0</span></div>
+    <div class="stat-box" style="border-color:orange"><h3>To Replace</h3><span id="s-old">0</span></div>
+    <div class="stat-box" style="border-color:red"><h3>Warranty Exp</h3><span id="s-warr">0</span></div>
+</div>
+<div class="card" style="margin: 20px 0; display: flex; gap: 15px; align-items: center; background: #e9ecef;">
+    <h4 style="margin: 0;">Generate Report:</h4>
+    <select id="report-lab" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="all">All Labs</option>
+    </select>
+    <button class="btn" style="background: #6f42c1;" onclick="downloadPDF()">📄 Download PDF</button>
+</div><div class="charts-row">
+    <div class="chart-card"><h3>System Health</h3><canvas id="statusChart"></canvas></div>
+    <div class="chart-card"><h3>Lab Distribution</h3><canvas id="labChart"></canvas></div>
+</div>

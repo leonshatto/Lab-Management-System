@@ -1,0 +1,13 @@
+<h2>Manage Equipment Types</h2>
+<div class="card" style="margin-bottom: 20px;">
+    <form id="type-form" onsubmit="addType(event)" style="display: flex; gap: 10px; align-items: center;">
+        <input type="text" id="new_type_name" placeholder="Enter new equipment type (e.g. Server)" required class="form-control" style="max-width: 300px;">
+        <button type="submit" class="btn">Add Type</button>
+    </form>
+</div>
+<div class="card">
+    <table class="table" style="width: 50%;">
+        <thead><tr><th>Type Name</th><th>Action</th></tr></thead>
+        <tbody id="type-list"></tbody>
+    </table>
+</div>

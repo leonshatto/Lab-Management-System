@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>LMS Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+   <div class="sidebar" style="display: flex; flex-direction: column; height: 100vh; overflow-y: auto;">
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="images/cec_logo.jpeg" alt="CEC Logo" class="app-logo">
+        <h3 class="logo-text">Lab Management</h3>
+    </div>
+
+    <a class="nav-link" onclick="show('home')">Dashboard</a>
+    <a class="nav-link" onclick="show('equipment')" id="nav-equip">Equipment List</a>
+    <a class="nav-link" onclick="show('stock')" id="nav-stock">Stock List</a>
+    <a class="nav-link" onclick="show('inventory')" id="nav-inv">Add Inventory</a>
+    <a class="nav-link" onclick="show('users')" id="nav-users">Manage Users</a>
+    <a class="nav-link" onclick="show('transfers')" id="nav-trans">Transfers</a>
+    <a class="nav-link" onclick="show('issues')" id="nav-issues">Issues</a>
+    <a class="nav-link" onclick="show('labs')" id="nav-labs">Manage Labs</a>
+    <a class="nav-link" onclick="show('types')" id="nav-types" style="display: none;">Manage Equipment Types</a>
+
+    <div style="flex-grow: 1;"></div>
+
+    <a class="nav-link" onclick="logout()" style="color: #ff6b6b; padding-top: 15px; padding-bottom: 15px; border-top: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+        🚪 Logout
+    </a>
+</div>
+
+    <div class="main" id="main-content">
+        <h2>Loading...</h2>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

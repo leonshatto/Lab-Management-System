@@ -1,0 +1,19 @@
+<h1>Manage Users</h1>
+<div class="card">
+    <input id="u-name" placeholder="Username">
+    <input id="u-email" placeholder="Email">
+    <input id="u-pass" placeholder="Password">
+    <select id="u-role">
+        <option>LabStaff</option>
+        <option>Approver</option>
+        <option>Admin</option>
+    </select>
+    <button class="btn" onclick="addUser()">Create User</button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr><th>Name</th><th>Role</th><th>Action</th></tr>
+    </thead>
+    <tbody id="user-list"></tbody>
+</table>
